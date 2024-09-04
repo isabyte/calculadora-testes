@@ -1,5 +1,7 @@
 package app.service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -35,6 +37,9 @@ public class CalculosService {
 		System.out.println("O produto é igual a " + multiplicacao);
 		resultado.setMultiplicacao(multiplicacao);
 		
+		List<Integer> moda = this.moda(entrada.getLista());
+		resultado.setModa(moda);
+				
 		return resultado;
 		
 	}
@@ -103,6 +108,49 @@ public class CalculosService {
 		}
 		
 		return resultado;
+	}
+	
+	private List<Integer> moda(List<Integer> lista) {
+		
+		// ordena a lista
+		Collections.sort(lista);
+		
+		// lista de modas
+		List<Integer> modas = new ArrayList<>();
+		
+		// variáveis de controle
+		int contagemMax = 0;
+		int contagemAtual = 1;
+		int ultimoNumero = lista.get(0);
+		
+		// percorre a lista e conta as ocorrêncas
+		for(int i = 1; i < lista.size(); i++) {
+			int numeroAtual = lista.get(i);
+			
+			if(numeroAtual == ultimoNumero) {
+				contagemAtual++;
+			} else {
+				if(contagemAtual > contagemMax) {
+					modas.clear();
+					modas.add(ultimoNumero);
+					contagemMax = contagemAtual;
+				} else if(contagemAtual == contagemMax) {
+					modas.add(ultimoNumero);
+				}
+				contagemAtual = 1;
+				ultimoNumero = numeroAtual;
+			}
+		}
+		
+		// verifica a última sequência
+		if(contagemAtual > contagemMax) {
+			modas.clear();
+			modas.add(ultimoNumero);
+		} else if(contagemAtual == contagemMax) {
+			modas.add(ultimoNumero);
+		}
+		
+		return modas;
 	}
 
 }

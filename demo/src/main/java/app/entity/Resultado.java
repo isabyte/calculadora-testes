@@ -1,5 +1,7 @@
 package app.entity;
 
+import java.util.List;
+
 public class Resultado {
 	
 	private int soma;
@@ -8,6 +10,7 @@ public class Resultado {
 	private int menor;
 	private int quantidade;
 	private int multiplicacao;
+	private List<Integer> moda;
 
 	public int getSoma() {
 		return soma;
@@ -55,6 +58,14 @@ public class Resultado {
 
 	public void setMultiplicacao(int multiplicacao) {
 		this.multiplicacao = multiplicacao;
+	}
+
+	public List<Integer> getModa() {
+		return moda;
+	}
+
+	public void setModa(List<Integer> moda) {
+		this.moda = moda;
 	}
 
 }
