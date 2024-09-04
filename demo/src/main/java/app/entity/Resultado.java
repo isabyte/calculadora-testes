@@ -7,6 +7,7 @@ public class Resultado {
 	private int maior;
 	private int menor;
 	private int quantidade;
+	private int multiplicacao;
 
 	public int getSoma() {
 		return soma;
@@ -46,6 +47,14 @@ public class Resultado {
 
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	public int getMultiplicacao() {
+		return multiplicacao;
+	}
+
+	public void setMultiplicacao(int multiplicacao) {
+		this.multiplicacao = multiplicacao;
 	}
 
 }

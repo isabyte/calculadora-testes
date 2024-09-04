@@ -15,7 +15,7 @@ public class CalculosService {
 		
 		Resultado resultado = new Resultado();
 		
-		int soma = this.somar(  entrada.getLista() );
+		int soma = this.somar(entrada.getLista() );
 		System.out.println("A soma deu "+ soma);
 		resultado.setSoma(soma);
 		
@@ -30,6 +30,10 @@ public class CalculosService {
 		
 		int quantidadeNumeros = this.quantidade(entrada.getLista());
 		resultado.setQuantidade(quantidadeNumeros);
+		
+		int multiplicacao = this.multiplicar(entrada.getLista());
+		System.out.println("O produto é igual a " + multiplicacao);
+		resultado.setMultiplicacao(multiplicacao);
 		
 		return resultado;
 		
@@ -74,6 +78,7 @@ public class CalculosService {
 		return maiorNumero;
 	}
 	
+	
 	private int menor(List<Integer> lista) {
 		int menorNumero = lista.get(0);
 		
@@ -88,6 +93,16 @@ public class CalculosService {
 	
 	private int quantidade(List<Integer> lista) {
 		return lista.size();
+	}
+	
+	private int multiplicar(List<Integer> lista) {
+		int resultado = 1;
+		
+		for(int num : lista) {
+			resultado *= num;
+		}
+		
+		return resultado;
 	}
 
 }
