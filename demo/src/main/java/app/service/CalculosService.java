@@ -34,11 +34,13 @@ public class CalculosService {
 		resultado.setQuantidade(quantidadeNumeros);
 		
 		int multiplicacao = this.multiplicar(entrada.getLista());
-		System.out.println("O produto é igual a " + multiplicacao);
 		resultado.setMultiplicacao(multiplicacao);
 		
 		List<Integer> moda = this.moda(entrada.getLista());
 		resultado.setModa(moda);
+		
+		double meadiana = this.mediana(entrada.getLista());
+		resultado.setMediana(meadiana);
 				
 		return resultado;
 		
@@ -151,6 +153,23 @@ public class CalculosService {
 		}
 		
 		return modas;
+	}
+	
+	private double mediana(List<Integer> lista) {
+		
+		// ordena a lista
+		Collections.sort(lista);
+		
+		// se a lista for ímpar
+		if((lista.size() % 2) == 1) {
+			return lista.get((lista.size() / 2));
+		}
+		
+		// se for par
+		double meio1 = lista.get((lista.size() / 2) - 1);
+		double meio2 = lista.get((lista.size() / 2));
+		
+		return ((meio1 + meio2) / 2);
 	}
 
 }

@@ -11,6 +11,7 @@ public class Resultado {
 	private int quantidade;
 	private int multiplicacao;
 	private List<Integer> moda;
+	private double mediana;
 
 	public int getSoma() {
 		return soma;
@@ -66,6 +67,14 @@ public class Resultado {
 
 	public void setModa(List<Integer> moda) {
 		this.moda = moda;
+	}
+
+	public double getMediana() {
+		return mediana;
+	}
+
+	public void setMediana(double mediana) {
+		this.mediana = mediana;
 	}
 
 }
