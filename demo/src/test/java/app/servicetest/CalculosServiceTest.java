@@ -47,5 +47,20 @@ public class CalculosServiceTest {
 		
 	}
 	
+	@Test
+	@DisplayName("Teste unitário - média = 4")
+	void cenarioMedia( ) {
+		
+		List<Integer> lista = new ArrayList<>();
+		lista.add(4);
+		lista.add(4);
+		lista.add(4);
+		
+		double media = calculosService.media(lista);
+		
+		Assertions.assertEquals(4, media);
+		
+	}
+	
 
 }
