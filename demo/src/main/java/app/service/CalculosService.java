@@ -46,7 +46,7 @@ public class CalculosService {
 		
 	}
 	
-	private int somar(List<Integer> lista) {
+	public int somar(List<Integer> lista) {
 		
 		int soma = 0;
 		
@@ -58,11 +58,11 @@ public class CalculosService {
 		
 	}
 	
-	private double media(List<Integer> lista) {
+	public double media(List<Integer> lista) {
 		return this.somar(lista) / lista.size();
 	}
 	
-	private int maior(List<Integer> lista) {
+	public int maior(List<Integer> lista) {
 		
 		int maiorNumero = lista.get(0);
 		
@@ -86,7 +86,7 @@ public class CalculosService {
 	}
 	
 	
-	private int menor(List<Integer> lista) {
+	public int menor(List<Integer> lista) {
 		int menorNumero = lista.get(0);
 		
 		for(int num : lista) {
@@ -98,11 +98,11 @@ public class CalculosService {
 		return menorNumero;
 	}
 	
-	private int quantidade(List<Integer> lista) {
+	public int quantidade(List<Integer> lista) {
 		return lista.size();
 	}
 	
-	private int multiplicar(List<Integer> lista) {
+	public int multiplicar(List<Integer> lista) {
 		int resultado = 1;
 		
 		for(int num : lista) {
@@ -112,7 +112,7 @@ public class CalculosService {
 		return resultado;
 	}
 	
-	private List<Integer> moda(List<Integer> lista) {
+	public List<Integer> moda(List<Integer> lista) {
 		
 		// ordena a lista
 		Collections.sort(lista);
@@ -155,7 +155,7 @@ public class CalculosService {
 		return modas;
 	}
 	
-	private double mediana(List<Integer> lista) {
+	public double mediana(List<Integer> lista) {
 		
 		// ordena a lista
 		Collections.sort(lista);
