@@ -66,14 +66,6 @@ public class CalculosService {
 		
 		int maiorNumero = lista.get(0);
 		
-		/*
-		for (int i=0; i<lista.size();i++) {
-			if (lista.get(i) > maiorNumero) {
-			maiorNumero = lista.get(i);
-			}
-		}
-		*/
-		
 		
 		for(int num : lista) {
 			if (num > maiorNumero) {
