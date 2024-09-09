@@ -1,5 +1,7 @@
 package app.servicetest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +63,21 @@ public class CalculosServiceTest {
 		double media = calculosService.media(lista);
 		
 		Assertions.assertEquals(4, media);
+		
+	}
+	
+	@Test
+	@DisplayName("Teste unitário - cenário de erro na média")
+	void cenarioMediaErro() {
+		
+		List<Integer> lista = new ArrayList<>();
+		lista.add(4);
+		lista.add(4);
+		lista.add(null);
+		
+		Assertions.assertThrows(Exception.class, () -> {
+			double media = calculosService.media(lista);
+		} );
 		
 	}
 	
@@ -162,5 +179,146 @@ public class CalculosServiceTest {
 		Assertions.assertEquals(2.5, resultado.getMediana());
 
 	}
+	
+	@Test
+	@DisplayName("Teste unitário - cenário de erro ao calcular")
+	void cenarioErroCalcular() {
+		
+		List<Integer> lista = new ArrayList<>();
+		lista.add(2);
+		lista.add(2);
+		lista.add(3);
+		lista.add(null);
+		
+		Entrada entrada = new Entrada();
+		entrada.setLista(lista);
+		
+		Assertions.assertThrows(Exception.class, () -> {
+			Resultado resultado = calculosService.calcular(entrada);			
+		} );
+		
+	}
+	
+	@Test
+	@DisplayName("Teste unitário - cenário em que o maior número é o primeiro item")
+	void cenarioMaiorPrimeiro() {
+		List<Integer> lista = new ArrayList<>();
+		lista.add(1000);
+		lista.add(5);
+		lista.add(100);
+		
+		int maior = calculosService.maior(lista);
+		
+		Assertions.assertEquals(1000, maior);
+		
+	}
+	
+	@Test
+	@DisplayName("Teste unitário - cenário em que o maior número é repetido")
+	void cenarioMaiorRepetido() {
+		List<Integer> lista = new ArrayList<>();
+		lista.add(2);
+		lista.add(5);
+		lista.add(3);
+		lista.add(5);
+		lista.add(2);
+		
+		int maior = calculosService.maior(lista);
+		
+		Assertions.assertEquals(5, maior);
+	}
+	
+	@Test
+	@DisplayName("Teste unitário - cenário em que o menor número é negativo")
+	void cenarioMenorNegativo() {
+		List<Integer> lista = new ArrayList<>();
+		lista.add(-1);
+		lista.add(0);
+		lista.add(1);
+		
+		int menor = calculosService.menor(lista);
+		
+		Assertions.assertEquals(-1, menor);
+	}
+	
+	@Test
+	@DisplayName("Teste unitário - cenário em que o menor número é zero")
+	void cenarioMenorZero() {
+		List<Integer> lista = new ArrayList<>();
+		lista.add(1);
+		lista.add(2);
+		lista.add(0);
+		lista.add(2);
+		lista.add(1);
+		
+		int menor = calculosService.menor(lista);
+		
+		Assertions.assertEquals(0, menor);
+		
+	}
+	
+	@Test
+	@DisplayName("Teste unitário - cenário em que o produto é igual a zero")
+	void cenarioProdutoZero() {
+		List<Integer> lista = new ArrayList<>();
+		lista.add(1);
+		lista.add(0);
+		lista.add(3);
+		
+		int produto = calculosService.multiplicar(lista);
+		
+		Assertions.assertEquals(0, produto);
+		
+	}
+	
+	@Test
+	@DisplayName("Teste unitário - cenário em que o produto é negativo")
+	void cenarioProdutoNegativo() {
+		List<Integer> lista = new ArrayList<>();
+		lista.add(-1);
+		lista.add(15);
+		
+		int produto = calculosService.multiplicar(lista);
+		
+		Assertions.assertEquals(-15, produto);
+		
+	}
+	
+	@Test
+	@DisplayName("Teste unitário - cenário em que há 5 itens na lista")
+	void cenarioCincoItens() {
+		List<Integer> lista = new ArrayList<>();
+		lista.add(0);
+		lista.add(1);
+		lista.add(2);
+		lista.add(3);
+		lista.add(4);
+		
+		int quantidade = calculosService.quantidade(lista);
+		
+		Assertions.assertEquals(5, quantidade);
+	}
+	
+	@Test
+	@DisplayName("Teste unitário - cenário em que há um item nulo na lista")
+	void cenarioListaNula() {
+		List<Integer> lista = new ArrayList<>();
+		lista.add(null);
+		
+		int quantidade = calculosService.quantidade(lista);
+		
+		Assertions.assertEquals(1, quantidade);
+	}
+	
+	@Test
+	@DisplayName("Teste unitário - cenário em que não há itens na lista")
+	void cenarioListaVazia() {
+		List<Integer> lista = new ArrayList<>();
+		
+		int quantidade = calculosService.quantidade(lista);
+		
+		Assertions.assertEquals(0, quantidade);
+	}
+
 
 }
